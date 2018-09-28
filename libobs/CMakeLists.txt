@@ -451,9 +451,8 @@ set_target_properties(libobs PROPERTIES
 	OUTPUT_NAME obs
 	VERSION "0"
 	SOVERSION "0")
-target_compile_definitions(libobs
-	PUBLIC
-		HAVE_OBSCONFIG_H)
+# zhangfj    20180928    默认注释掉该预编译选项
+# target_compile_definitions(libobs PUBLIC HAVE_OBSCONFIG_H)
 
 if(NOT MSVC)
 	target_compile_options(libobs

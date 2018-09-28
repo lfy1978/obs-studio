@@ -1413,7 +1413,7 @@ void OBSBasic::OBSInit()
 	if (!sceneCollection)
 		throw "Failed to get scene collection name";
 
-	ret = snprintf(fileName, 512, "obs-studio/basic/scenes/%s.json",
+	ret = snprintf(fileName, 512, "xmf/obs-studio/basic/scenes/%s.json",
 			sceneCollection);
 	if (ret <= 0)
 		throw "Failed to create scene collection file name";
@@ -4503,7 +4503,7 @@ void OBSBasic::UploadLog(const char *subdir, const char *file)
 void OBSBasic::on_actionShowLogs_triggered()
 {
 	char logDir[512];
-	if (GetConfigPath(logDir, sizeof(logDir), "obs-studio/logs") <= 0)
+	if (GetConfigPath(logDir, sizeof(logDir), "xmf/obs-studio/logs") <= 0)
 		return;
 
 	QUrl url = QUrl::fromLocalFile(QT_UTF8(logDir));
@@ -4523,7 +4523,7 @@ void OBSBasic::on_actionUploadLastLog_triggered()
 void OBSBasic::on_actionViewCurrentLog_triggered()
 {
 	char logDir[512];
-	if (GetConfigPath(logDir, sizeof(logDir), "obs-studio/logs") <= 0)
+	if (GetConfigPath(logDir, sizeof(logDir), "xmf/obs-studio/logs") <= 0)
 		return;
 
 	const char* log = App()->GetCurrentLog();
@@ -4539,7 +4539,7 @@ void OBSBasic::on_actionViewCurrentLog_triggered()
 void OBSBasic::on_actionShowCrashLogs_triggered()
 {
 	char logDir[512];
-	if (GetConfigPath(logDir, sizeof(logDir), "obs-studio/crashes") <= 0)
+	if (GetConfigPath(logDir, sizeof(logDir), "xmf/obs-studio/crashes") <= 0)
 		return;
 
 	QUrl url = QUrl::fromLocalFile(QT_UTF8(logDir));
@@ -4548,7 +4548,7 @@ void OBSBasic::on_actionShowCrashLogs_triggered()
 
 void OBSBasic::on_actionUploadLastCrashLog_triggered()
 {
-	UploadLog("obs-studio/crashes", App()->GetLastCrashLog());
+	UploadLog("xmf/obs-studio/crashes", App()->GetLastCrashLog());
 }
 
 void OBSBasic::on_actionCheckForUpdates_triggered()
@@ -6063,7 +6063,7 @@ int OBSBasic::GetProfilePath(char *path, size_t size, const char *file) const
 	if (!file)
 		file = "";
 
-	ret = GetConfigPath(profiles_path, 512, "obs-studio/basic/profiles");
+	ret = GetConfigPath(profiles_path, 512, "xmf/obs-studio/basic/profiles");
 	if (ret <= 0)
 		return ret;
 
