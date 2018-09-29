@@ -23,6 +23,7 @@
 #define warn(format, ...)  do_log(LOG_WARNING, format, ##__VA_ARGS__)
 #define info(format, ...)  do_log(LOG_INFO,    format, ##__VA_ARGS__)
 #define debug(format, ...) do_log(LOG_DEBUG,   format, ##__VA_ARGS__)
+#define tips(format, ...) do_log(LOG_ERROR_TIPS,   format, ##__VA_ARGS__)  //   zhangfj    20180928    add
 
 #define OPT_DROP_THRESHOLD "drop_threshold_ms"
 #define OPT_PFRAME_DROP_THRESHOLD "pframe_drop_threshold_ms"

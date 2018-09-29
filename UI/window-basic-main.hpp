@@ -30,6 +30,8 @@
 #include "window-basic-adv-audio.hpp"
 #include "window-basic-filters.hpp"
 #include "window-projector.hpp"
+#include "window-basic-login.hpp"       // zhangfj    20180928    add
+#include "online-live-state.hpp"        // zhangfj    20180928    add
 
 #include <obs-frontend-internal.hpp>
 
@@ -750,6 +752,44 @@ public:
 
 private:
 	std::unique_ptr<Ui::OBSBasic> ui;
+
+// zhangfj    20180928    add
+private:
+	QPointer<QThread>         logoutThread;
+	QPointer<OnlineLiveState> onlineLiveState;
+	bool                      m_bPushStreamSisconnected;
+	bool                      m_bMenuActionUpdate;
+	time_t                    m_tlanding_server_time;       // 登陆时，服务端时间戳
+	time_t                    m_tlanding_client_tick_count; // 登陆时，客户端GetTickCount()
+
+public:
+	void Login();
+	void Logout();
+	void WebLogout();
+	void logoutFinished(const QString &text, const QString &error);
+	void LoginSuccessSetSource(obs_source_t *source);
+	void SaveLoginService(const std::string& server, const std::string& key);
+	std::string GetAppVersion();
+
+public slots:
+	void on_actionLogin_triggered();
+	void on_actionLogout_triggered();
+	void LoginNormal(const QString& info);
+	void LoginSucceeded(const QString& data);
+	void OnlineLiveMessage(const QString &type, const QString &context);
+	void LoginToMainWindow(const QString& type, const QString& context);
+
+private:
+	void FirstRun();
+	void actionLogin(int type = 0);  // type = 0, 启动调用登陆， type = 1,点击菜单登陆
+
+public:
+	bool isPushStreamSisconnected() { return m_bPushStreamSisconnected; }
+	void moveShow();
+
+public Q_SLOTS:
+	void show();
+	void showNormal();
 };
 
 class ColorSelect : public QWidget {

@@ -150,6 +150,9 @@ endif()
 file(GLOB QT_DEBUG_BIN_FILES
 	"${Qt5Core_DIR}/../../../bin/Qt5Cored.dll"
 	"${Qt5Core_DIR}/../../../bin/Qt5Guid.dll"
+    "${Qt5Core_DIR}/../../../bin/Qt5WebSocketsd.dll"
+	"${Qt5Core_DIR}/../../../bin/Qt5Networkd.dll"
+    "${Qt5Core_DIR}/../../../bin/Qt5NetworkAuthd.dll"
 	"${Qt5Core_DIR}/../../../bin/Qt5Widgetsd.dll"
 	"${Qt5Core_DIR}/../../../bin/libGLESv2d.dll"
 	"${Qt5Core_DIR}/../../../bin/libEGLd.dll")
@@ -161,6 +164,9 @@ file(GLOB QT_DEBUG_STYLES_BIN_FILES
 file(GLOB QT_BIN_FILES
 	"${Qt5Core_DIR}/../../../bin/Qt5Core.dll"
 	"${Qt5Core_DIR}/../../../bin/Qt5Gui.dll"
+    "${Qt5Core_DIR}/../../../bin/Qt5WebSockets.dll"
+	"${Qt5Core_DIR}/../../../bin/Qt5NetworkAuth.dll"
+    "${Qt5Core_DIR}/../../../bin/Qt5Network.dll"
 	"${Qt5Core_DIR}/../../../bin/Qt5Widgets.dll"
 	"${Qt5Core_DIR}/../../../bin/libGLESv2.dll"
 	"${Qt5Core_DIR}/../../../bin/libEGL.dll")

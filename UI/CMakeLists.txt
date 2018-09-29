@@ -50,6 +50,36 @@ if(NOT Qt5Widgets_FOUND)
 	endif()
 endif()
 
+find_package(Qt5WebSockets ${FIND_MODE})
+if(NOT Qt5WebSockets_FOUND)
+	if (ENABLE_UI)
+		message(FATAL_ERROR "Failed to find Qt5")
+	else()
+		message(STATUS "Qt5 not found - UI disabled")
+		return()
+	endif()
+endif()
+
+find_package(Qt5Network ${FIND_MODE})
+if(NOT Qt5Network_FOUND)
+	if (ENABLE_UI)
+		message(FATAL_ERROR "Failed to find Qt5")
+	else()
+		message(STATUS "Qt5 not found - UI disabled")
+		return()
+	endif()
+endif()
+
+find_package(Qt5NetworkAuth ${FIND_MODE})
+if(NOT Qt5NetworkAuth_FOUND)
+	if (ENABLE_UI)
+		message(FATAL_ERROR "Failed to find Qt5")
+	else()
+		message(STATUS "Qt5 not found - UI disabled")
+		return()
+	endif()
+endif()
+
 
 include_directories(${FFMPEG_INCLUDE_DIRS})
 include_directories(SYSTEM "obs-frontend-api")
@@ -131,7 +161,10 @@ set(obs_SOURCES
 	${obs_libffutil_SOURCES}
 	../deps/json11/json11.cpp
 	obs-app.cpp
+	online-live-state.cpp
 	api-interface.cpp
+	web-login.cpp
+	window-basic-login.cpp
 	window-basic-main.cpp
 	window-basic-stats.cpp
 	window-basic-filters.cpp
@@ -174,7 +207,10 @@ set(obs_SOURCES
 	crash-report.cpp
 	hotkey-edit.cpp
 	source-label.cpp
+	remote-data.cpp
 	remote-text.cpp
+	remote-post.cpp
+	md5.cpp
 	audio-encoders.cpp
 	qt-wrappers.cpp)
 
@@ -183,8 +219,11 @@ set(obs_HEADERS
 	${obs_libffutil_HEADERS}
 	../deps/json11/json11.hpp
 	obs-app.hpp
+	online-live-state.hpp
 	platform.hpp
+	web-login.hpp
 	window-main.hpp
+	window-basic-login.hpp
 	window-basic-main.hpp
 	window-basic-stats.hpp
 	window-basic-filters.hpp
@@ -226,7 +265,10 @@ set(obs_HEADERS
 	crash-report.hpp
 	hotkey-edit.hpp
 	source-label.hpp
+	remote-data.hpp
 	remote-text.hpp
+	remote-post.hpp
+	md5.h
 	audio-encoders.hpp
 	qt-wrappers.hpp)
 
@@ -240,6 +282,7 @@ set(obs_UI
 	forms/OBSLicenseAgreement.ui
 	forms/OBSLogReply.ui
 	forms/OBSBasic.ui
+	forms/OBSBasicLogin.ui
 	forms/OBSBasicTransform.ui
 	forms/OBSBasicFilters.ui
 	forms/OBSBasicSettings.ui
@@ -270,11 +313,16 @@ if(WIN32)
 	set_target_properties(obs
 		PROPERTIES
 			OUTPUT_NAME "xmf${_output_suffix}")
+    # zhangfj    20180928    管理员权限启动exe程序
+	# set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "/level='requireAdministrator' /uiAccess='false'")
 endif()
 
 target_link_libraries(obs
 	libobs
 	Qt5::Widgets
+	Qt5::WebSockets
+	Qt5::Network
+	Qt5::NetworkAuth
 	obs-frontend-api
 	${FFMPEG_LIBRARIES}
 	${LIBCURL_LIBRARIES}

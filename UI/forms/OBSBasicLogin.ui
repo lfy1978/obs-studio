@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OBSBasicLogin</class>
+ <widget class="QDialog" name="OBSBasicLogin">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>340</width>
+    <height>186</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>login</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>images/obs.png</normaloff>images/obs.png</iconset>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="1" colspan="3">
+    <widget class="QLineEdit" name="edtPassword">
+     <property name="echoMode">
+      <enum>QLineEdit::PasswordEchoOnEdit</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="lblPassword">
+     <property name="text">
+      <string>Password</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="lblUserName">
+     <property name="text">
+      <string>UserName</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="3">
+    <widget class="QLineEdit" name="edtUserName"/>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="lblErrorInfo">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>LoginFail</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2" colspan="2">
+    <widget class="QCheckBox" name="cbxRememberPassword">
+     <property name="text">
+      <string>RememberPassword</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QCheckBox" name="cbxAutoLogin">
+     <property name="text">
+      <string>AutoLogin</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="3">
+    <widget class="QPushButton" name="btnRegister">
+     <property name="text">
+      <string>Register</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1" colspan="2">
+    <widget class="QPushButton" name="btnLogin">
+     <property name="font">
+      <font>
+       <family>Adobe Arabic</family>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>WorkStart</string>
+     </property>
+     <property name="autoRepeatDelay">
+      <number>298</number>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>edtUserName</tabstop>
+  <tabstop>edtPassword</tabstop>
+  <tabstop>cbxRememberPassword</tabstop>
+  <tabstop>cbxAutoLogin</tabstop>
+  <tabstop>btnLogin</tabstop>
+  <tabstop>btnRegister</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

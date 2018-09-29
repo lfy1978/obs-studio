@@ -18,7 +18,7 @@
 #pragma once
 
 #include "obs.h"
-#include "obs-internal.h"
+//#include "obs-internal.h"  // zhangfj    20180928    del
 #include "graphics/matrix4.h"
 
 /* how obs scene! */

@@ -317,12 +317,20 @@
     <addaction name="autoConfigure"/>
     <addaction name="separator"/>
    </widget>
+   <widget class="QMenu" name="menuBasic_MainMenu_LoginSetting">
+    <property name="title">
+     <string>Basic.MainMenu.LoginSetting</string>
+    </property>
+    <addaction name="actionLogin"/>
+    <addaction name="actionLogout"/>
+   </widget>
    <addaction name="menu_File"/>
    <addaction name="menuBasic_MainMenu_Edit"/>
    <addaction name="viewMenu"/>
    <addaction name="profileMenu"/>
    <addaction name="sceneCollectionMenu"/>
    <addaction name="menuTools"/>
+   <addaction name="menuBasic_MainMenu_LoginSetting"/>
    <addaction name="menuBasic_MainMenu_Help"/>
   </widget>
   <widget class="OBSBasicStatusBar" name="statusbar"/>
@@ -1519,6 +1527,19 @@
    </property>
    <property name="text">
     <string>Basic.MainMenu.Edit.LockPreview</string>
+   </property>
+  </action>
+  <action name="actionLogin">
+   <property name="text">
+    <string>Login</string>
+   </property>
+  </action>
+  <action name="actionLogout">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Logout</string>
    </property>
   </action>
   <action name="actionScaleWindow">
